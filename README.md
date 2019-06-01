@@ -7,62 +7,14 @@ The goal of this project is to create a Postgres database with tables designed t
 See file `etl.pt` for the ETL pipeline code, `sql_queries.py` for table creation and deletion functions insertion queries. The file `create_tables.py` is used to create the tables in the `sparkifydb` database.
 
 # Star Schema
-There is one fact table named <tt>songplays</tt> and *four* dimension tables:
-- <tt>users</tt>
-- <tt>songs</tt>
-- <tt>artists</tt>
-- <tt>time</tt>
+There is one fact table named <tt>songplays</tt> and four dimension tables:
 
 ```SQL
 CREATE TYPE sex as ENUM('F', 'M');
 CREATE TYPE level as ENUM('free', 'paid');
 ```
 
-| <tt>songplays</tt> |  |
-| ----------- | ----------- |
-| songplay_id | SERIAL PRIMARY KEY |
-| start_time | timestamp NOT NULL |
-| user_id | int REFERENCES users(user_id) |
-| level | level |
-| song_id | text REFERENCES songs(song_id) |
-| artist_id | text REFERENCES artists(artist_id) |
-| session_id | int NOT NULL |
-| location | text |
-| user_agent | text |
-
-| <tt>users</tt> |  |
-| ----------- | ----------- |
-| user_id | int PRIMARY KEY |
-| first_name | text NOT NULL |
-| last_name | text NOT NULL |
-| gender | sex |
-| level | level NOT NULL |
-
-| <tt>songs</tt> |  |
-| ----------- | ----------- |
-| song_id | text PRIMARY KEY |
-| title | text NOT NULL |
-| artist_id | text NOT NULL |
-| year | int |
-| duration | numeric(10, 5) |
-
-| <tt>artists</tt> |  |
-| ----------- | ----------- |
-| artist_id | text PRIMARY KEY |
-| name | text NOT NULL |
-| location | text |
-| lattitude | float |
-| longitude | float |
-
-| <tt>time</tt> |  |
-| ----------- | ----------- |
-| start_time | time |
-| hour | int |
-| day | int |
-| week | int |
-| month | int |
-| year | int |
-| weekday | int |
+![ERD Diagram](https://github.com/troyjc/data-modeling-postgres/blob/master/docs/Postgres%20Modeling%20ERD.png)
 
 Note that I am not referencing the <tt>time</tt> table, because I elected to use a `timestamp` for the song play start time.
 
