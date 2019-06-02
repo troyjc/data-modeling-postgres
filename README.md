@@ -16,8 +16,6 @@ CREATE TYPE level as ENUM('free', 'paid');
 
 ![ERD Diagram](https://github.com/troyjc/data-modeling-postgres/blob/master/docs/Postgres%20Modeling%20ERD.png)
 
-Note that I am not referencing the <tt>time</tt> table, because I elected to use a `timestamp` for the song play start time.
-
 # Conflicts
 There can be conflicts when inserting into the tables. The <tt>users</tt> and <tt>artists</tt> tables have clauses to handle this *upsert* logic:
 
