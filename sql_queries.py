@@ -52,7 +52,7 @@ artist_table_create = ("""CREATE TABLE IF NOT EXISTS artists (artist_id text pri
                                                               longitude float);
 """)
 
-time_table_create = ("""CREATE TABLE IF NOT EXISTS time (start_time time,
+time_table_create = ("""CREATE TABLE IF NOT EXISTS time (start_time timestamp,
                                                          hour int,
                                                          day int,
                                                          week int,
