@@ -36,5 +36,5 @@ INSERT INTO artists (artist_id, name, location, lattitude, longitude)
 ```SQL
 INSERT INTO songs (song_id, title, artist_id, year, duration)
                    VALUES(%s, %s, %s, %s, %s)
-                   ON CONFLICT DO NOTHING;
+                   ON CONFLICT (song_id) DO NOTHING;
 ```
